@@ -1,26 +1,230 @@
+/* Tailwind Import */
 @import "tailwindcss";
 
+/* Root Theme Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0D0F1A;
+  --foreground: #E4E8FF;
+  --primary: #6C63FF;
+  --secondary: #00E0FF;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --dark-bg: #0D0F1A;
+
+  --radius: 18px;
+
+  --transition-fast: 0.25s ease;
+  --transition-slow: 0.45s ease;
+
+  --shadow-glow: 0 0 15px rgba(0, 224, 255, 0.3),
+                  0 0 35px rgba(108, 99, 255, 0.25);
+
+  --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Auto Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0D0F1A;
+    --foreground: #E4E8FF;
   }
 }
 
+/* Next.js Theme Bindings (removed @theme for compatibility) */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Body Styling */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.7;
+  font-size: 17px;
+  transition: background-color var(--transition-slow),
+              color var(--transition-fast);
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ----------------------- */
+/*      GLASSMORPHISM      */
+/* ----------------------- */
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  padding: 1rem;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.glass:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+.glass-dark {
+  background: rgba(13, 15, 26, 0.7);
+  border-radius: var(--radius);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ----------------------- */
+/*    GRADIENT TEXT        */
+/* ----------------------- */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3.5s ease infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ----------------------- */
+/*    BUTTON STYLING       */
+/* ----------------------- */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 12px 26px;
+  border-radius: var(--radius);
+  color: white;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  box-shadow: 0 0 8px rgba(0, 224, 255, 0.4);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary);
+  padding: 2rem;
+  border-radius: var(--radius);
+  color: var(--foreground);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ----------------------- */
+/*     CUSTOM SCROLLBAR    */
+/* ----------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0C16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ----------------------- */
+/*   MODERN CURSOR TRAIL   */
+/* ----------------------- */
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--secondary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+}
+
+.cursor-outline {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out, opacity 0.2s;
+}
+
+/* ----------------------- */
+/*   UTILITY IMPROVEMENTS  */
+/* ----------------------- */
+
+.section {
+  padding-block: clamp(2rem, 6vw, 4rem);
+}
+
+.card-hover {
+  transition: var(--transition-fast);
+}
+
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-glow);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Nice subtle divider */
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary),
+    transparent
+  );
+  margin: 3rem 0;
+}
+.padding-tag1{
+  padding: 10px;
+}
+.margin-left1{
+  margin-left: 200px;
 }

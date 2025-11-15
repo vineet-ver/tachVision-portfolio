@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "AI Analytics Dashboard",
+      "category": "AI Solutions",
+      "description": "Real-time analytics platform powered by machine learning algorithms for predictive insights.",
+      "image": "/projects/project1.jpg",
+      "tags": ["AI", "Machine Learning", "Dashboard"],
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "E-Commerce Platform",
+      "category": "Web Development",
+      "description": "Modern e-commerce solution with seamless checkout and inventory management.",
+      "image": "/projects/project2.jpg",
+      "tags": ["React", "Next.js", "Stripe"],
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "title": "Banking App Redesign",
+      "category": "UI/UX Design",
+      "description": "Complete redesign of mobile banking app with focus on user experience and accessibility.",
+      "image": "/projects/project3.jpg",
+      "tags": ["Figma", "UI/UX", "Mobile"],
+      "link": "#"
+    },
+    {
+      "id": 4,
+      "title": "Brand Identity - TechFlow",
+      "category": "Branding",
+      "description": "Complete brand identity including logo, color palette, and brand guidelines.",
+      "image": "/projects/project4.jpg",
+      "tags": ["Branding", "Design", "Identity"],
+      "link": "#"
+    },
+    {
+      "id": 5,
+      "title": "Healthcare AI Assistant",
+      "category": "AI Solutions",
+      "description": "AI-powered virtual assistant for patient care and appointment scheduling.",
+      "image": "/projects/project5.jpg",
+      "tags": ["AI", "Healthcare", "Chatbot"],
+      "link": "#"
+    },
+    {
+      "id": 6,
+      "title": "SaaS Dashboard",
+      "category": "Web Development",
+      "description": "Comprehensive SaaS platform with analytics, team management, and billing.",
+      "image": "/projects/project6.jpg",
+      "tags": ["SaaS", "Dashboard", "React"],
+      "link": "#"
+    }
+  ]
+}
